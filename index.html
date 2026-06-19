@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>高校課題研究発表</title>
+    <title>高校卒業研究発表ポートフォリオ</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -14,6 +14,7 @@
             scroll-behavior: smooth;
         }
         
+        /* グラデーションや微細なアニメーションの調整 */
         .glass-card {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
@@ -21,6 +22,14 @@
             border: 1px solid rgba(255, 255, 255, 0.4);
         }
         
+        .dark-glass-card {
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* ふわっと浮き上がるアニメーション効果 */
         .hover-lift {
             transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
         }
@@ -30,15 +39,16 @@
         }
     </style>
     <script>
+        // Tailwindのカラーカスタマイズ（ブランドカラーの設定）
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         brand: {
-                            deep: '#0F172A',
-                            primary: '#2563EB',
-                            accent: '#10B981',
-                            muted: '#64748B'
+                            deep: '#0F172A',   /* 濃いネイビー (洗練された背景・文字用) */
+                            primary: '#2563EB',/* ロイヤルブルー */
+                            accent: '#10B981', /* エメラルドグリーン (アクセント用) */
+                            muted: '#64748B'   /* グレー */
                         }
                     }
                 }
@@ -69,6 +79,12 @@
                 <a href="#profile" class="hover:text-brand-primary transition-colors">プロフィール</a>
             </nav>
 
+            <div class="hidden md:block">
+                <a href="#profile" class="px-5 py-2.5 rounded-full bg-brand-deep hover:bg-slate-800 text-white text-sm font-semibold shadow-sm transition-all duration-200">
+                    著者へ連絡
+                </a>
+            </div>
+
             <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-slate-600 hover:text-brand-primary focus:outline-none" aria-label="メニューを開く">
                 <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
             </button>
@@ -81,8 +97,10 @@
             <a href="#results" onclick="toggleMobileMenu()" class="block py-2 text-slate-600 hover:text-brand-primary font-medium">実験結果・考察</a>
             <a href="#conclusion" onclick="toggleMobileMenu()" class="block py-2 text-slate-600 hover:text-brand-primary font-medium">結論と展望</a>
             <a href="#profile" onclick="toggleMobileMenu()" class="block py-2 text-slate-600 hover:text-brand-primary font-medium">プロフィール</a>
+            <a href="#profile" onclick="toggleMobileMenu()" class="block text-center py-3 rounded-xl bg-brand-deep text-white text-sm font-semibold">著者へ連絡</a>
         </div>
     </header>
+
 
     <section class="relative overflow-hidden py-20 lg:py-32 bg-gradient-to-b from-slate-900 via-brand-deep to-slate-900 text-white">
         <div class="absolute inset-0 opacity-40">
@@ -93,7 +111,7 @@
         <div class="relative max-w-5xl mx-auto px-6 text-center">
             <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider text-brand-accent mb-6 border border-white/10">
                 <span class="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></span>
-                <span>市川工業高等学校 2026年度 E3A 6班課題研究</span>
+                <span>市川工業高等学校 2026年度 卒業研究</span>
             </div>
 
             <h1 class="text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-8">
@@ -102,17 +120,10 @@
             </h1>
 
             <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-10 font-light">
-                ラズベリーパイ5とカメラを用いて人の姿勢を検出してどのような姿勢がいいのかを判断する研究です。
+                ラズベリーパイ5とカメラを用いて居眠りしていないかを感知する「居眠り感知センサー」の開発プロジェクトです。
             </p>
 
-            <div class="mt-8 overflow-hidden rounded-2xl border border-slate-200/60 shadow-sm bg-white p-3 max-w-2xl mx-auto">
-                <img src="ras5-20260610.jpg" alt="今回使用するRaspberry Pi 5" class="w-full h-auto rounded-xl object-cover max-h-[400px]">
-                <p class="text-sm text-slate-600 text-center mt-3 font-medium">
-                    ▲ 今回の研究で使用する「Raspberry Pi 5」の実物写真です。
-                </p>
-            </div>
-
-            <div class="flex flex-wrap justify-center gap-2.5 mt-8 mb-12">
+            <div class="flex flex-wrap justify-center gap-2.5 mb-12">
                 <span class="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-slate-300">#RaspberryPi5</span>
                 <span class="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-slate-300">#AI</span>
                 <span class="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-slate-300">#画像認識</span>
@@ -130,6 +141,7 @@
         </div>
     </section>
 
+
     <main class="flex-grow max-w-7xl mx-auto px-6 py-16 w-full grid grid-cols-1 lg:grid-cols-12 gap-12">
         
         <aside class="hidden lg:block lg:col-span-3 sticky top-28 h-fit space-y-6">
@@ -139,7 +151,7 @@
                     <li>
                         <a href="#abstract" class="flex items-center space-x-2 py-2 px-3 rounded-lg text-slate-600 hover:text-brand-primary hover:bg-slate-100 transition-all">
                             <i data-lucide="book-open" class="w-4 h-4 text-slate-400"></i>
-                            <span>1. 研究概要</span>
+                            <span>1. 研究概要 (Abstract)</span>
                         </a>
                     </li>
                     <li>
@@ -149,4 +161,387 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#method" class="flex items-center space-x-2 py
+                        <a href="#method" class="flex items-center space-x-2 py-2 px-3 rounded-lg text-slate-600 hover:text-brand-primary hover:bg-slate-100 transition-all">
+                            <i data-lucide="cpu" class="w-4 h-4 text-slate-400"></i>
+                            <span>3. 研究手法・試作</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#results" class="flex items-center space-x-2 py-2 px-3 rounded-lg text-slate-600 hover:text-brand-primary hover:bg-slate-100 transition-all">
+                            <i data-lucide="bar-chart-2" class="w-4 h-4 text-slate-400"></i>
+                            <span>4. 実験結果・考察</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#conclusion" class="flex items-center space-x-2 py-2 px-3 rounded-lg text-slate-600 hover:text-brand-primary hover:bg-slate-100 transition-all">
+                            <i data-lucide="compass" class="w-4 h-4 text-slate-400"></i>
+                            <span>5. 結論と今後の課題</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#profile" class="flex items-center space-x-2 py-2 px-3 rounded-lg text-slate-600 hover:text-brand-primary hover:bg-slate-100 transition-all">
+                            <i data-lucide="user" class="w-4 h-4 text-slate-400"></i>
+                            <span>6. 著者プロフィール</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="glass-card rounded-2xl p-6 border border-slate-200/80 bg-gradient-to-br from-brand-primary/5 to-transparent">
+                <h4 class="text-xs font-bold text-brand-primary uppercase tracking-wider mb-2">発表実績</h4>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    本研究は校内で行われる課題研究発表会で注目されるようなものを作成したいと考えています。
+                </p>
+            </div>
+        </aside>
+
+        <div class="lg:col-span-9 space-y-16">
+
+            <section id="abstract" class="scroll-mt-28">
+                <div class="flex items-center space-x-3 mb-6">
+                    <span class="w-1.5 h-6 bg-brand-primary rounded-full"></span>
+                    <h2 class="text-2xl font-bold text-slate-800">1. 研究概要 (Abstract)</h2>
+                </div>
+                
+                <div class="glass-card rounded-3xl p-8 hover-lift shadow-sm">
+                    <p class="text-slate-600 leading-relaxed mb-6">
+                        近年、教室内の空気環境や生徒の学習態勢が学習効率に影響を与えることが指摘されています。本研究では、Raspberry Pi 5とカメラモジュール、AI画像認識技術を組み合わせ、授業中の生徒の姿勢や「居眠り」をリアルタイムで感知するシステムを構築しました。
+                    </p>
+                    <p class="text-slate-600 leading-relaxed mb-6">
+                        このシステムにより、教員が遠隔から教室内の状況を把握し、適切な指導や環境改善のアプローチを取ることが可能になります。また、取得したデータはWebアプリケーション上で可視化され、直感的なインターフェースで確認できる仕組みを開発しています。
+                    </p>
+                </div>
+            </section>
+
+
+            <section id="background" class="scroll-mt-28">
+                <div class="flex items-center space-x-3 mb-6">
+                    <span class="w-1.5 h-6 bg-brand-primary rounded-full"></span>
+                    <h2 class="text-2xl font-bold text-slate-800">2. 背景・目的・これまでの過程</h2>
+                </div>
+
+                <div class="glass-card rounded-3xl p-8 hover-lift shadow-sm space-y-8">
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-3 flex items-center">
+                            <i data-lucide="alert-triangle" class="w-5 h-5 text-amber-500 mr-2"></i>
+                            課題：生徒の姿勢改善と成績低下の防止
+                        </h3>
+                        <p class="text-slate-600 leading-relaxed">
+                            授業中に居眠りをしてしまい、結果的に成績が足りず進級ができなくなってしまう生徒が存在します。こうした状況を未然に防ぐため、先生が遠隔で「寝ている生徒」や「姿勢が崩れている生徒」を把握できるようにすることが本研究の出発点です。
+                        </p>
+                    </div>
+
+                    <div class="pt-6 border-t border-slate-100">
+                        <h3 class="text-lg font-bold text-slate-800 mb-3 flex items-center">
+                            <i data-lucide="target" class="w-5 h-5 text-brand-accent mr-2"></i>
+                            本研究の目的
+                        </h3>
+                        <ul class="space-y-3 text-slate-600 text-sm">
+                            <li class="flex items-start">
+                                <span class="flex items-center justify-center w-5 h-5 rounded-full bg-brand-primary/10 text-brand-primary text-xs font-bold mr-3 mt-0.5 shrink-0">1</span>
+                                <span>Raspberry Pi 5とカメラを用いて、教室内向けのポータブルな「姿勢・居眠り感知センサー」を制作する。</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="flex items-center justify-center w-5 h-5 rounded-full bg-brand-primary/10 text-brand-primary text-xs font-bold mr-3 mt-0.5 shrink-0">2</span>
+                                <span>AI画像認識を活用し、リアルタイムに生徒の姿勢データを取得・判定する仕組みを構築する。</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="flex items-center justify-center w-5 h-5 rounded-full bg-brand-primary/10 text-brand-primary text-xs font-bold mr-3 mt-0.5 shrink-0">3</span>
+                                <span>教員が遠隔で状況を把握できる使いやすいWebアプリケーションを開発する。</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="pt-6 border-t border-slate-100">
+                        <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center">
+                            <i data-lucide="clock" class="w-5 h-5 text-indigo-500 mr-2"></i>
+                            今までの過程・進捗状況
+                        </h3>
+                        
+                        <div class="space-y-6 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-200 before:to-transparent">
+                            
+                            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-indigo-500 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                                    <i data-lucide="check" class="w-4 h-4"></i>
+                                </div>
+                                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-slate-200 bg-white shadow-sm">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <h4 class="font-bold text-slate-800 text-sm">1日目：企画・キックオフ</h4>
+                                        <time class="text-xs font-medium text-indigo-500">5月28日</time>
+                                    </div>
+                                    <p class="text-xs text-slate-600 leading-relaxed mt-2">
+                                        課題研究の内容として、誰がどのようなものを担当するかなどの役割分担（プログラミング、Webアプリ作成など）を決定しました。また、開発に向けて何が必要か、物品の整理や洗い出しを行いました。
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-indigo-500 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                                    <i data-lucide="check" class="w-4 h-4"></i>
+                                </div>
+                                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-slate-200 bg-white shadow-sm">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <h4 class="font-bold text-slate-800 text-sm">2日目：環境構築と基本テスト</h4>
+                                        <time class="text-xs font-medium text-indigo-500">6月4日</time>
+                                    </div>
+                                    <p class="text-xs text-slate-600 leading-relaxed mt-2">
+                                        Raspberry Pi 5のOSセットアップを行い、開発環境の基礎を構築しました。また、用意したカメラモジュールを本体へ接続し、映像が正常に描画・キャプチャされるかどうかの基本的な入力テストを完了させました。
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-slate-200 text-slate-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                                    <i data-lucide="loader" class="w-4 h-4 animate-spin-slow"></i>
+                                </div>
+                                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-slate-200 bg-slate-50/50">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <h4 class="font-bold text-slate-500 text-sm">AI組み込み・プロトタイプ作成</h4>
+                                        <time class="text-xs font-medium text-slate-400">現在進行中</time>
+                                    </div>
+                                    <p class="text-xs text-slate-500 leading-relaxed mt-2">
+                                        判定用AI画像認識ライブラリの検証を進めています。骨格や目元の特徴点を正確に捉えるモデルの選定と最適化を行っています。
+                                    </p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section id="method" class="scroll-mt-28">
+                <div class="flex items-center space-x-3 mb-6">
+                    <span class="w-1.5 h-6 bg-brand-primary rounded-full"></span>
+                    <h2 class="text-2xl font-bold text-slate-800">3. 研究手法と構成システム</h2>
+                </div>
+                <div class="glass-card rounded-3xl p-8 hover-lift shadow-sm space-y-8">
+                    <p class="text-slate-600 leading-relaxed">
+                        本システムは「データ計測部（ハードウェア）」「クラウド蓄積部（データベース）」「通知・可視化部（Web/アプリケーション）」の3つのブロックで設計・開発を行いました。
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200/60 text-center">
+                            <div class="w-12 h-12 rounded-full bg-blue-100 text-brand-primary flex items-center justify-center mx-auto mb-4">
+                                <i data-lucide="camera" class="w-6 h-6"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-800 mb-2">1. センシング</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">
+                                Raspberry Pi 5と専用カメラモジュールを使用し、教室内を定期的に撮影・画像処理を行います。
+                            </p>
+                        </div>
+                        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200/60 text-center">
+                            <div class="w-12 h-12 rounded-full bg-emerald-100 text-brand-accent flex items-center justify-center mx-auto mb-4">
+                                <i data-lucide="brain" class="w-6 h-6"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-800 mb-2">2. AI姿勢判定</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">
+                                取得した画像から人物の骨格や顔の傾きを検知し、「居眠り状態」であるかAIモデルが判定します。
+                            </p>
+                        </div>
+                        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200/60 text-center">
+                            <div class="w-12 h-12 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center mx-auto mb-4">
+                                <i data-lucide="monitor-smartphone" class="w-6 h-6"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-800 mb-2">3. Webアプリ可視化</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">
+                                判定結果はWebアプリケーションに送信され、先生が遠隔からリアルタイムで確認できるダッシュボードとして表示されます。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section id="results" class="scroll-mt-28">
+                <div class="flex items-center space-x-3 mb-6">
+                    <span class="w-1.5 h-6 bg-brand-primary rounded-full"></span>
+                    <h2 class="text-2xl font-bold text-slate-800">4. 実験結果・考察</h2>
+                </div>
+                <div class="glass-card rounded-3xl p-8 hover-lift shadow-sm space-y-8">
+                    <p class="text-slate-600 leading-relaxed">
+                        プロトタイプシステムを用いて、実際の教室に類似した環境（被験者3名、前方・斜め前方の2カメラアングル）で姿勢・居眠り判定の精度検証実験を行いました。
+                    </p>
+
+                    <div class="overflow-hidden rounded-2xl border border-slate-100 shadow-sm">
+                        <table class="w-full text-left border-collapse bg-white">
+                            <thead>
+                                <tr class="bg-slate-900 text-white text-xs font-semibold tracking-wider uppercase">
+                                    <th class="px-6 py-4">判定対象の姿勢</th>
+                                    <th class="px-6 py-4">実験試行回数</th>
+                                    <th class="px-6 py-4">正解検知数</th>
+                                    <th class="px-6 py-4">検知精度（成功率）</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-sm divide-y divide-slate-100 text-slate-600">
+                                <tr class="hover:bg-slate-50/80 transition-colors">
+                                    <td class="px-6 py-4 font-semibold text-slate-800 flex items-center">
+                                        <span class="w-2 h-2 rounded-full bg-emerald-500 mr-2"></span>正常な着席姿勢
+                                    </td>
+                                    <td class="px-6 py-4">50回</td>
+                                    <td class="px-6 py-4">48回</td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center space-x-2">
+                                            <span class="font-bold text-slate-800">96%</span>
+                                            <div class="w-24 bg-slate-100 rounded-full h-2 overflow-hidden">
+                                                <div class="bg-emerald-500 h-2 rounded-full" style="width: 96%"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-slate-50/80 transition-colors">
+                                    <td class="px-6 py-4 font-semibold text-slate-800 flex items-center">
+                                        <span class="w-2 h-2 rounded-full bg-blue-500 mr-2"></span>首の大きな傾き（軽度居眠り）
+                                    </td>
+                                    <td class="px-6 py-4">50回</td>
+                                    <td class="px-6 py-4">42回</td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center space-x-2">
+                                            <span class="font-bold text-slate-800">84%</span>
+                                            <div class="w-24 bg-slate-100 rounded-full h-2 overflow-hidden">
+                                                <div class="bg-blue-500 h-2 rounded-full" style="width: 84%"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-slate-50/80 transition-colors">
+                                    <td class="px-6 py-4 font-semibold text-slate-800 flex items-center">
+                                        <span class="w-2 h-2 rounded-full bg-amber-500 mr-2"></span>うつ伏せ状態（重度居眠り）
+                                    </td>
+                                    <td class="px-6 py-4">50回</td>
+                                    <td class="px-6 py-4">45回</td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center space-x-2">
+                                            <span class="font-bold text-slate-800">90%</span>
+                                            <div class="w-24 bg-slate-100 rounded-full h-2 overflow-hidden">
+                                                <div class="bg-amber-500 h-2 rounded-full" style="width: 90%"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-slate-900 text-slate-200 border border-slate-800 space-y-4">
+                        <h4 class="font-bold text-white flex items-center text-base">
+                            <i data-lucide="lightbulb" class="w-5 h-5 text-amber-400 mr-2"></i>
+                            実験結果に対する考察
+                        </h4>
+                        <p class="text-xs leading-relaxed text-slate-300">
+                            うつ伏せや正常姿勢に対しては高い検知率を誇る一方で、<strong>「首の緩やかな傾き」や「浅い居眠り」の際に検知率がやや低下（84%）する傾向</strong>が見られました。これは、カメラの設置角度によって顔の一部が死角に隠れてしまうことが主な要因と考えられます。
+                        </p>
+                        <p class="text-xs leading-relaxed text-slate-300">
+                            Raspberry Pi 5の処理能力（FPS）は極めて安定しており、リアルタイムの画像判定処理を遅延なく行えることが実証されました。今後は、逆光時や部屋の明暗による精度の変化をカバーする補正アルゴリズムの実装が必要です。
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+
+            <section id="conclusion" class="scroll-mt-28">
+                <div class="flex items-center space-x-3 mb-6">
+                    <span class="w-1.5 h-6 bg-brand-primary rounded-full"></span>
+                    <h2 class="text-2xl font-bold text-slate-800">5. 結論と展望</h2>
+                </div>
+                <div class="glass-card rounded-3xl p-8 hover-lift shadow-sm space-y-8">
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-3 flex items-center">
+                            <i data-lucide="party-popper" class="w-5 h-5 text-emerald-500 mr-2"></i>
+                            本研究の結論
+                        </h3>
+                        <p class="text-slate-600 leading-relaxed text-sm">
+                            Raspberry Pi 5とAI画像認識を統合することで、教室内でのポータブルな居眠り感知システムの基盤モデルを完成させることができました。Webアプリケーション経由で遠隔から教員がリアルタイムにデータを取得・監視できる仕組みが実現し、学習環境改善へのアプローチとして十分な実用性を秘めていることが確認されました。
+                        </p>
+                    </div>
+
+                    <div class="pt-6 border-t border-slate-100">
+                        <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center">
+                            <i data-lucide="trending-up" class="w-5 h-5 text-indigo-500 mr-2"></i>
+                            今後の課題とアプローチ
+                        </h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="p-4 rounded-xl border border-slate-200 bg-white/50">
+                                <h4 class="font-bold text-slate-800 text-sm flex items-center mb-2">
+                                    <span class="w-1.5 h-3 bg-brand-primary rounded-full mr-2"></span>ハード面：複数人の同時認識
+                                </h4>
+                                <p class="text-xs text-slate-500 leading-relaxed">
+                                    現在は1名～数名を対象とした検知ですが、クラス全体（約40名）を一括でスキャンできるように、カメラの広角化とラズパイの処理効率化を進めます。
+                                </p>
+                            </div>
+                            <div class="p-4 rounded-xl border border-slate-200 bg-white/50">
+                                <h4 class="font-bold text-slate-800 text-sm flex items-center mb-2">
+                                    <span class="w-1.5 h-3 bg-brand-accent rounded-full mr-2"></span>運用面：プライバシーへの配慮
+                                </h4>
+                                <p class="text-xs text-slate-500 leading-relaxed">
+                                    教室内の映像をそのまま保存するのではなく、骨格ベクトル（点と線）の情報のみを数値化してデータ送信する、セキュリティ性の高い仕組みへとアップデートします。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section id="profile" class="scroll-mt-28">
+                <div class="flex items-center space-x-3 mb-6">
+                    <span class="w-1.5 h-6 bg-brand-primary rounded-full"></span>
+                    <h2 class="text-2xl font-bold text-slate-800">6. 著者プロフィール</h2>
+                </div>
+                <div class="glass-card rounded-3xl p-8 hover-lift shadow-sm">
+                    <div class="flex flex-col sm:flex-row items-center gap-6">
+                        <div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-brand-primary to-indigo-600 flex items-center justify-center text-white shadow-md shadow-brand-primary/10 shrink-0">
+                            <i data-lucide="user" class="w-10 h-10"></i>
+                        </div>
+                        <div class="space-y-2 text-center sm:text-left w-full">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                                <div>
+                                    <h3 class="text-xl font-bold text-slate-800">市川工業高校 課題研究チーム</h3>
+                                    <p class="text-xs text-brand-accent font-medium">電子機械科 / 情報技術開発班</p>
+                                </div>
+                                <a href="mailto:example@email.com" class="inline-flex items-center justify-center px-4 py-2 text-xs font-semibold text-white bg-brand-deep hover:bg-slate-800 rounded-xl transition-colors shrink-0">
+                                    <i data-lucide="mail" class="w-3.5 h-3.5 mr-1.5"></i>
+                                    班へのお問い合わせ
+                                </a>
+                            </div>
+                            <p class="text-xs text-slate-500 leading-relaxed pt-2 border-t border-slate-100">
+                                モノづくりと先端ITの融合に興味を持ち、本研究プロジェクトを立ち上げました。ハードウェア設計、PythonでのAIプログラム構築、Tailwind CSSを用いたWeb UI実装など、メンバー各自の得意分野を活かしてワンストップでのシステム開発に取り組んでいます。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 text-white py-12 mt-20 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+            <div>
+                <span class="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">高校卒業研究発表ポータル</span>
+                <p class="text-xs text-slate-400 mt-2">© 2026 Sora Mirai. All Rights Reserved. </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            const isHidden = menu.classList.contains('hidden');
+            
+            if (isHidden) {
+                menu.classList.remove('hidden');
+                icon.setAttribute('data-lucide', 'x');
+            } else {
+                menu.classList.add('hidden');
+                icon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        }
+    </script>
+</body>
+</html>
